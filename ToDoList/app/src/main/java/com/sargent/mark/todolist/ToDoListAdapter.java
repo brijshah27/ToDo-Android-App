@@ -75,8 +75,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         String description;
         CheckBox status;
 
-        //adding status entity
-        Boolean undone;
+
         long id;
 
 
@@ -84,6 +83,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
+
+            //[Brij:] Initialize checkbox
             status = (CheckBox) view.findViewById(R.id.status);
             view.setOnClickListener(this);
         }
@@ -111,7 +112,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             {
                 @Override
                 public void onClick (View v){
-                    // do stuff with item id here
+                   //[Brij:] Check for todos status and call helper method accordingly.
                     if(!status.isChecked()){
                         markAsUndone();
                     }else{
@@ -137,6 +138,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             due.setPaintFlags(due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
+        //[Brij:] Make text normal for not done todos.
         private void markAsUndone() {
             descr.setPaintFlags(descr.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
             due.setPaintFlags(due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);

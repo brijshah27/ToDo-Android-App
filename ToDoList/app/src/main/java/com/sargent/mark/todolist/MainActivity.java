@@ -183,17 +183,6 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
 
 
-//        public void onCheckboxClicked (View view,long id, boolean done){
-//        Log.v(TAG, "id:" + view.getId());
-//        ContentValues cv = new ContentValues();
-//        cv.put(Contract.TABLE_TODO.COLUMN_NAME_STATUS, (done ? 1 : 0));
-//        db.update(Contract.TABLE_TODO.TABLE_NAME, cv,
-//                Contract.TABLE_TODO._ID + "=" + id, null);
-//
-//    }
-
-
-
     @Override
     public void closeUpdateDialog(int year, int month, int day, String description, long id) {
         updateToDo(db, year, month, day, description, id);

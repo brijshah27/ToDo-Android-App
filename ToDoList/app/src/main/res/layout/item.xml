@@ -11,6 +11,12 @@
         android:textSize="20dp"
         android:text="To do description"/>
 
+    <CheckBox android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:onClick="onCheckboxClicked"/>
+
     <TextView
         android:id="@+id/dueDate"
         android:layout_width="match_parent"

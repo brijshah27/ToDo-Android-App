@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
-        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
+        "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/bug/.android/build-cache/cf3cd97ab169d9e967214caead656d12b936691b/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
-        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
+        "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/bug/.android/build-cache/cf3cd97ab169d9e967214caead656d12b936691b/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
     }
 ]

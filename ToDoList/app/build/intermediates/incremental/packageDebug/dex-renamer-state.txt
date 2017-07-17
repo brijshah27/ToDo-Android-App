@@ -1,7 +1,7 @@
-#Wed Jul 12 14:47:50 PDT 2017
-base.0=/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1c41d78b6335b2d6cedf2ad8cbc37a7ea7f98c22
+#Sun Jul 16 22:52:17 PDT 2017
+base.0=/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_dfbe98ce4f31a36cc6130f4c254314dd0d5036d5
 renamed.1=classes2.dex
 renamed.0=classes.dex
-file.1=/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_248a94d252828eb83a606f0af078799be5f1c862/classes.dex
-base.1=/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_248a94d252828eb83a606f0af078799be5f1c862
-file.0=/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1c41d78b6335b2d6cedf2ad8cbc37a7ea7f98c22/classes.dex
+file.1=/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3b2ad3afc9bc39be6ab25f4daa2a588a6083f9fd/classes.dex
+base.1=/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3b2ad3afc9bc39be6ab25f4daa2a588a6083f9fd
+file.0=/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_dfbe98ce4f31a36cc6130f4c254314dd0d5036d5/classes.dex

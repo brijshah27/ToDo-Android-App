@@ -2,17 +2,16 @@ package com.sargent.mark.todolist;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.sargent.mark.todolist.data.Contract;
-import com.sargent.mark.todolist.data.ToDoItem;
-
-import java.util.ArrayList;
 
 /**
  * Created by mark on 7/4/17.
@@ -35,6 +34,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         return holder;
     }
 
+
+
     @Override
     public void onBindViewHolder(ItemHolder holder, int position) {
         holder.bind(holder, position);
@@ -44,6 +45,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
     public int getItemCount() {
         return cursor.getCount();
     }
+
+
 
     public interface ItemClickListener {
         void onItemClick(int pos, String description, String duedate, long id);
@@ -63,11 +66,17 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         }
     }
 
+
+
     class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView descr;
         TextView due;
         String duedate;
         String description;
+        CheckBox status;
+
+        //adding status entity
+        Boolean undone;
         long id;
 
 
@@ -75,6 +84,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
+            status = (CheckBox) view.findViewById(R.id.status);
             view.setOnClickListener(this);
         }
 
@@ -85,16 +95,56 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 
             duedate = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE));
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
+
+            //setting status to undone by default
+//            undone = cursor.getInt(
+//                    cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_STATUS)) ==
+//                    1;
             descr.setText(description);
             due.setText(duedate);
-            holder.itemView.setTag(id);
-        }
 
+            holder.itemView.setTag(id);
+
+            //[Brij:] Adding listener on checkbox to add mark as done/undone.
+            status.setOnClickListener(new View.OnClickListener()
+
+            {
+                @Override
+                public void onClick (View v){
+                    // do stuff with item id here
+                    if(!status.isChecked()){
+                        markAsUndone();
+                    }else{
+                        markDone();
+                    }
+                    Log.d(TAG, "---------->>>>>>>>>>>ITEM ID: " + id);
+
+                }
+            });
+
+
+        }
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
             listener.onItemClick(pos, description, duedate, id);
         }
+
+
+        //[Brij:] Make text striketrough for done todos.
+        private void markDone() {
+            descr.setPaintFlags(descr.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            due.setPaintFlags(
+                    due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+
+        private void markAsUndone() {
+            descr.setPaintFlags(
+                    descr.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            due.setPaintFlags(
+                    due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+
     }
 
 }

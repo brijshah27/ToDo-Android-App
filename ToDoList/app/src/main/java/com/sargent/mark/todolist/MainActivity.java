@@ -3,20 +3,23 @@ package com.sargent.mark.todolist;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 
-
 import com.sargent.mark.todolist.data.Contract;
 import com.sargent.mark.todolist.data.DBHelper;
+
+import static com.sargent.mark.todolist.R.id.recyclerView;
+
+//import android.support.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity implements AddToDoFragment.OnDialogCloseListener, UpdateToDoFragment.OnUpdateDialogCloseListener{
 
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
                 frag.show(fm, "addtodofragment");
             }
         });
-        rv = (RecyclerView) findViewById(R.id.recyclerView);
+        rv = (RecyclerView) findViewById(recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -80,7 +83,9 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
         rv.setAdapter(adapter);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT ) {
 
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -95,7 +100,34 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
                 adapter.swapCursor(getAllItems(db));
             }
         }).attachToRecyclerView(rv);
+
+
+//        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT ) {
+//
+//            @Override
+//            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+//                long id = (long) viewHolder.itemView.getTag();
+//                marktodo(db, id);
+//                adapter.swapCursor(getAllItems(db));
+//            }
+//        }).attachToRecyclerView(rv);
     }
+
+//    private void marktodo(SQLiteDatabase db, long id) {
+//
+//        ContentValues cv = new ContentValues();
+//        cv.put(Contract.TABLE_TODO.COLUMN_NAME_STATUS, (0));
+//        db.update(Contract.TABLE_TODO.TABLE_NAME, cv,
+//                Contract.TABLE_TODO._ID + "=" + id, null);
+//        String name = (Contract.TABLE_TODO.TABLE_NAME);
+//        Log.d(TAG, "name is: " + name);
+//    }
+
 
     @Override
     public void closeDialog(int year, int month, int day, String description) {
@@ -135,6 +167,8 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
 
+
+
     private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, long id){
 
         String duedate = formatDate(year, month - 1, day);
@@ -145,6 +179,20 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
         return db.update(Contract.TABLE_TODO.TABLE_NAME, cv, Contract.TABLE_TODO._ID + "=" + id, null);
     }
+
+
+
+
+//        public void onCheckboxClicked (View view,long id, boolean done){
+//        Log.v(TAG, "id:" + view.getId());
+//        ContentValues cv = new ContentValues();
+//        cv.put(Contract.TABLE_TODO.COLUMN_NAME_STATUS, (done ? 1 : 0));
+//        db.update(Contract.TABLE_TODO.TABLE_NAME, cv,
+//                Contract.TABLE_TODO._ID + "=" + id, null);
+//
+//    }
+
+
 
     @Override
     public void closeUpdateDialog(int year, int month, int day, String description, long id) {

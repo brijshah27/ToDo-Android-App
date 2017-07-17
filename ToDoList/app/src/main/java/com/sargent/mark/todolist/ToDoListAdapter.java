@@ -134,15 +134,12 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         //[Brij:] Make text striketrough for done todos.
         private void markDone() {
             descr.setPaintFlags(descr.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            due.setPaintFlags(
-                    due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            due.setPaintFlags(due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
         private void markAsUndone() {
-            descr.setPaintFlags(
-                    descr.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
-            due.setPaintFlags(
-                    due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            descr.setPaintFlags(descr.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            due.setPaintFlags(due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
     }

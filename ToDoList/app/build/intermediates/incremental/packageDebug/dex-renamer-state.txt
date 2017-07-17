@@ -1,4 +1,4 @@
-#Sun Jul 16 22:52:17 PDT 2017
+#Mon Jul 17 00:37:16 PDT 2017
 base.0=/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_dfbe98ce4f31a36cc6130f4c254314dd0d5036d5
 renamed.1=classes2.dex
 renamed.0=classes.dex

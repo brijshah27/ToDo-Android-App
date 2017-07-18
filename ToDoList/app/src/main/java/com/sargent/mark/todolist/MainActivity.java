@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
     private RecyclerView rv;
     private FloatingActionButton button;
-    private DBHelper helper;
+    private static DBHelper helper;
     private Cursor cursor;
     private SQLiteDatabase db;
     ToDoListAdapter adapter;
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
                 UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, category, id);
                 frag.show(fm, "updatetodofragment");
             }
+
         });
 
 
@@ -197,12 +198,16 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         adapter.swapCursor(getAllItems(db));
     }
 
-    public static void updateTodoStatus (SQLiteDatabase db,long id, boolean undone){
+    public static void updateTodoStatus(int pos, long id, boolean undone){
+        SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        //cv.put(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY, (undone ? 1 : 0));
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_STATUS, (undone ? 0 : 1));
         db.update(Contract.TABLE_TODO.TABLE_NAME, cv,
                 Contract.TABLE_TODO._ID + "=" + id, null);
+
+
     }
+
 
 
     @Override
@@ -236,7 +241,6 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
 

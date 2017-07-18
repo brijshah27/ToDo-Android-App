@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#42f4f4"
     android:padding="20dp"
     android:weightSum="1"
     tools:context="com.sargent.mark.todolist.MainActivity">
@@ -13,7 +14,9 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight=".90" />
+        android:layout_weight=".90"
+
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addToDo"
@@ -21,6 +24,7 @@
         android:layout_height="0dip"
         android:layout_weight=".10"
         android:text="Add Item"
+        android:background="#dbfeff"
         android:src="@drawable/ic_add_black_48dp"/>
 
 </LinearLayout>

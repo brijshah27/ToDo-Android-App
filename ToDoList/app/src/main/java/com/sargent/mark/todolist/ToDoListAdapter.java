@@ -73,7 +73,9 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
     class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView descr;
         TextView due;
+        TextView debug;
         String duedate;
+        String debug_data;
         String description;
         CheckBox status;
         String category;
@@ -88,7 +90,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
             caterogyTV = (TextView) view.findViewById(R.id.category);
-
+            debug = (TextView) view.findViewById(R.id.debug);
             //[Brij:] Initialize checkbox
             status = (CheckBox) view.findViewById(R.id.status);
             view.setOnClickListener(this);
@@ -102,59 +104,85 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             category = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY));
             duedate = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE));
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
+            debug_data = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_STATUS));
 
 
+            //setting status to not done by default
+            undone = cursor.getInt(
+                    cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_STATUS)) ==
+                    1;
+            descr.setText("Todo: "+description);
+            due.setText("Due by: "+duedate);
+            caterogyTV.setText("Category: "+category);
+            //debug.setText(debug_data);
 
-            //setting status to undone by default
-//            undone = cursor.getInt(
-//                   cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_STATUS)) ==
-//                    1;
-            descr.setText(description);
-            due.setText(duedate);
-            caterogyTV.setText(category);
 
             holder.itemView.setTag(id);
 
+            updateUi();
+
+
             //[Brij:] Adding listener on checkbox to add mark as done/undone.
-            status.setOnClickListener(new View.OnClickListener()
 
-            {
+            status.setOnClickListener(new View.OnClickListener() {
+
                 @Override
-                public void onClick (View v){
-
-                   //[Brij:] Check for todos status and call helper method accordingly.
+                public void onClick(View v) {
                     int pos = getAdapterPosition();
+                    Log.d(TAG, "ITEM ID: " + id);
+                    //[Brij:] Check for todos status and call helper method accordingly.
+
                     undone = !undone;
-                    if(!status.isChecked()){
-                        markAsUndone();
-                    }else{
-                        markDone();
-                    }
-                   //MainActivity.updateTodoStatus(db, id, undone);
-                    Log.d(TAG, "---------->>>>>>>>>>>ITEM ID: " + id);
+                    updateUi();
+//                    if(!status.isChecked()){
+//                        markAsUndone();
+//                    }else{
+//                        markDone();
+//                    }
+                    //updateUi();
+                    Log.d(TAG, "Before call:" + undone);
+                    MainActivity.updateTodoStatus(pos, id, undone);
+                    Log.d(TAG, "After call:>>>>>>>>>>>>>" + undone);
 
                 }
             });
 
-
         }
+
+
+
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
             listener.onItemClick(pos, description, duedate,category, id);
         }
 
+        //[Brij:] Done/ Not done todos updateUI
+        private void updateUi(){
+            if(undone){
+                descr.setPaintFlags(descr.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                due.setPaintFlags(due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                caterogyTV.setPaintFlags(due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            }
+            else{
+                descr.setPaintFlags(descr.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+                due.setPaintFlags(due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+                caterogyTV.setPaintFlags(due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            }
 
+        }
         //[Brij:] Make text striketrough for done todos.
         private void markDone() {
             descr.setPaintFlags(descr.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             due.setPaintFlags(due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            caterogyTV.setPaintFlags(due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
         //[Brij:] Make text normal for not done todos.
         private void markAsUndone() {
             descr.setPaintFlags(descr.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
             due.setPaintFlags(due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            caterogyTV.setPaintFlags(due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
     }

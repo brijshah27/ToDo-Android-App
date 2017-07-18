@@ -11,18 +11,26 @@
         android:textSize="20dp"
         android:text="To do description"/>
 
-    <CheckBox android:id="@+id/status"
+    <CheckBox
+        android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:onClick="onCheckboxClicked"/>
+        android:onClick="onCheckboxClicked" />
 
     <TextView
         android:id="@+id/dueDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
+        android:textSize="15dp"
         android:text="06-04-2017"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/category"
+        android:textSize="16dp"
+        android:text="Category"/>
 
     <View
         android:layout_width="match_parent"

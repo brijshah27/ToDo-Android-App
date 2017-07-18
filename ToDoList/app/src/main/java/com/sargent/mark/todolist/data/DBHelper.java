@@ -11,8 +11,8 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper{
 
-    private static final int DATABASE_VERSION = 2;
-    private static final String DATABASE_NAME = "itemsb.db";
+    private static final int DATABASE_VERSION = 4;
+    private static final String DATABASE_NAME = "items_5.db";
     private static final String TAG = "dbhelper";
 
     public DBHelper(Context context) {
@@ -21,14 +21,13 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        //adding new fields from contract
         String queryString = "CREATE TABLE " + Contract.TABLE_TODO.TABLE_NAME + " ("+
                 Contract.TABLE_TODO._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
-                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE " + "); ";
-                //Contract.TABLE_TODO.COLUMN_NAME_STATUS + " INTEGER NOT NULL " +
-                //"DEFAULT 1);";
+                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE ," +
+//adding new columns
+                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL " + "); ";
+// Contract.TABLE_TODO.COLUMN_NAME_STATUS + " INTEGER NOT NULL" + "DEFAULT 0); ";
 
         Log.d(TAG, "Create table SQL: " + queryString);
         db.execSQL(queryString);

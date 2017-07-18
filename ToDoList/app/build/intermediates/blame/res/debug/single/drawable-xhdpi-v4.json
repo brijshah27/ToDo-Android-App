@@ -40,12 +40,12 @@
         "source": "/Users/bug/.android/build-cache/d18bebdfbeb1dd59ffab3a2480a63066b92ad927/output/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png",
-        "source": "/Users/bug/.android/build-cache/d18bebdfbeb1dd59ffab3a2480a63066b92ad927/output/res/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/notification_bg_low_pressed.9.png",
         "source": "/Users/bug/.android/build-cache/d18bebdfbeb1dd59ffab3a2480a63066b92ad927/output/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png",
+        "source": "/Users/bug/.android/build-cache/d18bebdfbeb1dd59ffab3a2480a63066b92ad927/output/res/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_black_16dp.png",

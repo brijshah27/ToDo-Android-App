@@ -2,6 +2,7 @@ package com.sargent.mark.todolist;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,6 +23,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
     private Cursor cursor;
     private ItemClickListener listener;
     private String TAG = "todolistadapter";
+    private SQLiteDatabase db;
 
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -49,7 +51,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 
 
     public interface ItemClickListener {
-        void onItemClick(int pos, String description, String duedate, long id);
+        void onItemClick(int pos, String description, String duedate,String category, long id);
     }
 
     public ToDoListAdapter(Cursor cursor, ItemClickListener listener) {
@@ -74,7 +76,9 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         String duedate;
         String description;
         CheckBox status;
-
+        String category;
+        boolean undone;
+        TextView caterogyTV;
 
         long id;
 
@@ -83,6 +87,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
+            caterogyTV = (TextView) view.findViewById(R.id.category);
 
             //[Brij:] Initialize checkbox
             status = (CheckBox) view.findViewById(R.id.status);
@@ -94,15 +99,19 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             id = cursor.getLong(cursor.getColumnIndex(Contract.TABLE_TODO._ID));
             Log.d(TAG, "deleting id: " + id);
 
+            category = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY));
             duedate = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE));
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
 
+
+
             //setting status to undone by default
 //            undone = cursor.getInt(
-//                    cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_STATUS)) ==
+//                   cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_STATUS)) ==
 //                    1;
             descr.setText(description);
             due.setText(duedate);
+            caterogyTV.setText(category);
 
             holder.itemView.setTag(id);
 
@@ -112,12 +121,16 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             {
                 @Override
                 public void onClick (View v){
+
                    //[Brij:] Check for todos status and call helper method accordingly.
+                    int pos = getAdapterPosition();
+                    undone = !undone;
                     if(!status.isChecked()){
                         markAsUndone();
                     }else{
                         markDone();
                     }
+                   //MainActivity.updateTodoStatus(db, id, undone);
                     Log.d(TAG, "---------->>>>>>>>>>>ITEM ID: " + id);
 
                 }
@@ -128,7 +141,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
-            listener.onItemClick(pos, description, duedate, id);
+            listener.onItemClick(pos, description, duedate,category, id);
         }
 
 

@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
+
+
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
@@ -16,6 +18,8 @@
         android:paddingTop="2dp"
         android:text="To do description"/>
 
+
+    <!-- added checkbox for status !-->
     <CheckBox
         android:id="@+id/status"
         android:layout_width="match_parent"
@@ -37,6 +41,8 @@
         android:background="#FFF"
         android:text="06-04-2017"/>
 
+
+    <!-- added text view for category !-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

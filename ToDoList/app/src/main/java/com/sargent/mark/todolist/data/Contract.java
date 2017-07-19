@@ -15,7 +15,7 @@ public class Contract {
         public static final String COLUMN_NAME_DUE_DATE = "duedate";
 
 
-        //adding two more fields for done/undone and category
+        //Brij: adding two more fields for done/undone and category
 
        public static final String COLUMN_NAME_CATEGORY = "category";
         public static final String COLUMN_NAME_STATUS = "undone";

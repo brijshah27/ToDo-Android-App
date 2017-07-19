@@ -199,9 +199,11 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
     public static void updateTodoStatus(int pos, long id, boolean undone){
+
+        //[Brij:] Update database based on status value.
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Contract.TABLE_TODO.COLUMN_NAME_STATUS, (undone ? 0 : 1));
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_STATUS, (undone ? 1 : 0));
         db.update(Contract.TABLE_TODO.TABLE_NAME, cv,
                 Contract.TABLE_TODO._ID + "=" + id, null);
 
@@ -217,10 +219,11 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         if ("All".equalsIgnoreCase(selectedCategory)) {
             adapter.swapCursor(getAllItems(db));
         } else {
-            adapter.swapCursor(getItemsForCategory(db, selectedCategory));
+            adapter.swapCursor(getTodosBasedOnCategory(db, selectedCategory));
         }
     }
 
+    //[Brij:]Add categories from array values.
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
 
@@ -244,8 +247,8 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
 
-
-    private Cursor getItemsForCategory(SQLiteDatabase db, String category) {
+    //[Brij:] Show ToDos based on category selected from spinner.
+    private Cursor getTodosBasedOnCategory(SQLiteDatabase db, String category) {
         return db.query(Contract.TABLE_TODO.TABLE_NAME, null,
                 Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + "='" + category + "'",
                 null, null, null, Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE);

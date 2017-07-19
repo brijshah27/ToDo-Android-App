@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper{
                 Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE ," +
 
 
-                //adding new columns
+                //Brij: adding new columns for category and status.
                 Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL, " +
                 Contract.TABLE_TODO.COLUMN_NAME_STATUS + " INTEGER NOT NULL " +
                 "DEFAULT 0); ";

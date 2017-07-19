@@ -8,12 +8,12 @@
         "source": "/Users/bug/.android/build-cache/d18bebdfbeb1dd59ffab3a2480a63066b92ad927/output/res/layout/abc_screen_content_include.xml"
     },
     {
-        "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/bug/.android/build-cache/d18bebdfbeb1dd59ffab3a2480a63066b92ad927/output/res/layout/abc_screen_toolbar.xml"
-    },
-    {
         "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
         "source": "/Users/bug/.android/build-cache/d18bebdfbeb1dd59ffab3a2480a63066b92ad927/output/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/bug/.android/build-cache/d18bebdfbeb1dd59ffab3a2480a63066b92ad927/output/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/My Disk/CSU LA/Sem 03/CS 5540 - Android/Homework 3 ToDo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/layout/notification_template_custom_big.xml",

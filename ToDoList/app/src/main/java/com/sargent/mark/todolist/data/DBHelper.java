@@ -11,8 +11,8 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper{
 
-    private static final int DATABASE_VERSION = 8;
-    private static final String DATABASE_NAME = "items_8.db";
+    private static final int DATABASE_VERSION = 9;
+    private static final String DATABASE_NAME = "items_9.db";
     private static final String TAG = "dbhelper";
 
     public DBHelper(Context context) {

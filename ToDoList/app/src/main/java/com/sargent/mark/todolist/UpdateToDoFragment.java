@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 /**
@@ -61,6 +62,8 @@ public class UpdateToDoFragment extends DialogFragment {
         add = (Button) view.findViewById(R.id.add);
 
         spinner = (Spinner) view.findViewById(R.id.category_spinner);
+
+
 
         //[Brij:]Setting spinner value adapter.
         spinnerAdapter = ArrayAdapter.createFromResource(this.getContext(),

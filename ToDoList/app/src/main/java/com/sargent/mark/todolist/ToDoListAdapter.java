@@ -3,6 +3,7 @@ package com.sargent.mark.todolist;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sargent.mark.todolist.data.Contract;
@@ -77,6 +79,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         String duedate;
         String debug_data;
         String description;
+        final LinearLayout layout;
         CheckBox status;
         String category;
         boolean undone;
@@ -89,6 +92,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
+             layout = (LinearLayout) view.findViewById(R.id.item_layout);
 
             //[Brij:] Initialize category textview.
             caterogyTV = (TextView) view.findViewById(R.id.category);
@@ -106,6 +110,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             category = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY));
             duedate = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE));
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
+
             //debug_data = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_STATUS));
 
 
@@ -122,9 +127,11 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             //Brij: Making check box checked/unchecked based on status value
             if(undone){
                 status.setChecked(true);
+
             }
             else{
                 status.setChecked(false);
+
             }
             //debug.setText(debug_data);
 
@@ -156,10 +163,10 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 
                     //[Brij:]update UI based on status value
                     updateUi();
-                    Log.d(TAG, "Before call:" + undone);
+                    Log.d(TAG, "Before call:>>>>>>>" + undone);
 
                     //[Brij:]Make changes to Database.
-                    MainActivity.updateTodoStatus(pos, id, undone);
+                    MainActivity.updateToDo(pos, id, undone);
                     Log.d(TAG, "After call:>>>>>>>>>>>>>" + undone);
 
                 }
@@ -181,11 +188,13 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
                 descr.setPaintFlags(descr.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 due.setPaintFlags(due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 caterogyTV.setPaintFlags(due.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                layout.setBackgroundColor(Color.parseColor("#bdbdbd"));
             }
             else{
                 descr.setPaintFlags(descr.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
                 due.setPaintFlags(due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
                 caterogyTV.setPaintFlags(due.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+                layout.setBackgroundColor(Color.parseColor("#ededed"));
             }
 
         }

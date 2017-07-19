@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ToDo</string>
     <string name="menu_title">Select Category</string>
+
+    <!--- Array for category spinner values.-->
     <string-array name="todo_category_array">
         <item>Work</item>
         <item>Home</item>

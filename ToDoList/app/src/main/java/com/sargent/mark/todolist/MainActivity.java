@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         adapter.swapCursor(getAllItems(db));
     }
 
-    public static void updateTodoStatus(int pos, long id, boolean undone){
+    public static void updateToDo(int pos, long id, boolean undone){
 
         //[Brij:] Update database based on status value.
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
 
-
+    //Setting category based on item selected from menu.
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String selectedCategory = parent.getItemAtPosition(position).toString();
@@ -231,12 +231,14 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
         spinner.setOnItemSelectedListener(this);
 
+        //Getting category values from array.
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.menu_item_todo_category_array,
                 android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
 
+        //Setting spinner values.
         spinner.setAdapter(adapter);
         return true;
     }

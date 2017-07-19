@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#FFF"
+    android:id="@+id/item_layout"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:layout_marginBottom="15dp">
 
 
 
@@ -10,10 +13,9 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         android:textColor="#000"
-        android:background="#FFF"
         android:paddingLeft="10dp"
         android:paddingTop="2dp"
         android:text="To do description"/>
@@ -22,11 +24,10 @@
     <!-- added checkbox for status !-->
     <CheckBox
         android:id="@+id/status"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:background="#FFF"
-        android:paddingLeft="15dp"
+        android:paddingLeft="18dp"
         android:textColor="#000"
         android:onClick="onCheckboxClicked" />
 
@@ -34,11 +35,10 @@
         android:id="@+id/dueDate"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textStyle="bold"
         android:textColor="#000"
         android:paddingLeft="10dp"
-        android:background="#FFF"
         android:text="06-04-2017"/>
 
 
@@ -51,7 +51,6 @@
         android:textColor="#000"
         android:textStyle="bold"
         android:paddingLeft="10dp"
-        android:background="#FFF"
         android:text="Category"/>
 
     <TextView
@@ -62,14 +61,13 @@
         android:textStyle="bold"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:background="#FFF"
         />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="#F00"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="3dp"
         />
 
 </LinearLayout>

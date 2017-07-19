@@ -117,6 +117,15 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             due.setText("Due by: "+duedate);
             //[Brij:]Set category text.
             caterogyTV.setText("Category: "+category);
+
+
+            //Brij: Making check box checked/unchecked based on status value
+            if(undone){
+                status.setChecked(true);
+            }
+            else{
+                status.setChecked(false);
+            }
             //debug.setText(debug_data);
 
 
